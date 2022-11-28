@@ -1,0 +1,246 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# YARRR
+
+[<https://bookdown.org/ndphillips/YaRrr/exploring-data.html>]
+
+```{r}
+pacman::p_load('tidyverse', 'yarrr')
+```
+
+```{r}
+?pirates
+```
+
+```{r}
+yarrr.guide()
+```
+
+```{r}
+help(yarrr)
+```
+
+```{r}
+??yarrr
+```
+
+```{r}
+head(pirates)
+```
+
+```{r}
+names(pirates)
+```
+
+```{r}
+str(pirates)
+```
+
+```{r}
+sum(is.na(pirates))
+```
+
+```{r}
+View(pirates)
+```
+
+```{r}
+mean(pirates$age)
+```
+
+```{r}
+pirates %>% .$age
+```
+
+```{r}
+mean(pirates$age)
+```
+
+```{r}
+median(pirates$height)
+```
+
+```{r}
+max(pirates$age)
+```
+
+```{r}
+table(pirates$sex)
+```
+
+```{r}
+aggregate(age ~ sex,
+          data = pirates,
+          FUN = mean)
+```
+
+```{r}
+aggregate(age ~ sex,
+          data = pirates,
+          FUN = mean, simplify = TRUE, na.aciton = na.omit)
+```
+
+```{r}
+plot(x = pirates$height, y = pirates$weight)
+```
+
+```{r}
+pirates %>% 
+  plot(height ~ weight, data = .)
+```
+
+```{r}
+summary(pirates)
+```
+
+```{r}
+df <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+```
+
+```{r}
+summary(df)
+```
+
+```{r}
+df
+```
+
+```{r}
+df[1]
+```
+
+```{r}
+df$Training
+```
+
+```{r}
+df[['Training']]
+```
+
+```{r}
+names(pirates)
+```
+
+```{r}
+pirates[7]
+```
+
+```{r}
+pirates[['college']]
+```
+
+```{r}
+pirates$college
+```
+
+```{r}
+select(pirates, height, weight)
+```
+
+```{r}
+select(pirates, -height, -weight)
+```
+
+```{r}
+select(pirates, contains('i'), -id)
+```
+
+```{r}
+filter(pirates, height >= 200)
+```
+
+```{r}
+filter(mtcars, cyl == 6)
+```
+
+```{r}
+select(pirates, c(height, weight))
+```
+
+```{r}
+filter(pirates, college %in% c('CCCC', 'JSSFP'))
+```
+
+```{r}
+head(filter(mtcars, cyl %in% c(4, 6)))
+```
+
+```{r}
+filter(mtcars, hp > 200 & wt > 4)
+```
+
+```{r}
+filter(mtcars, hp > 200 | wt > 4)
+```
+
+```{r}
+filter(mtcars, (hp > 200 & wt > 4) | cyl==8)
+```
+
+```{r}
+airquality
+```
+
+```{r}
+airquality %>% 
+  arrange(Ozone) %>% 
+  head
+```
+
+```{r}
+airquality %>% 
+  arrange(Ozone) %>% 
+  head()
+```
+
+```{r}
+airquality %>% 
+  arrange(Ozone) %>% 
+  head(.)
+```
+
+```{r}
+airquality %>% 
+  select(Ozone, Solar.R) %>% 
+  arrange(Ozone, Solar.R) %>% 
+  head
+```
+
+```{r}
+airquality %>% 
+  select(Month, Ozone) %>% 
+  arrange(-Ozone, Month) %>% 
+  head
+```
+
+```{r}
+airquality %>% 
+  select(Ozone, Month, Solar.R) %>% 
+  filter(Ozone >= 125) %>% 
+  arrange(-Ozone)
+```
+
+```{r}
+big.bucket.of.data <- mtcars
+
+big.bucket.of.data %>%
+  filter(mpg <15) %>%
+  select(wt) %>%
+  summary
+```
+
+```{r}
+gas.guzzlers <- select(filter(mtcars, mpg < 15), wt)
+summary(gas.guzzlers)
+```
+
+```{r}
+summary(select(filter(mtcars, mpg < 15), wt))
+```
