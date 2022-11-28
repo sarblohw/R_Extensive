@@ -4,7 +4,54 @@ output: html_notebook
 ---
 
 ```{r}
+pacman::p_load('tidyverse')
+```
 
+```{r}
+set.seed(1234)
+
+weightloss <- tibble(
+    height_cm = rnorm(100, 150, 20),
+    weight_kg = rnorm(100, 65, 10)
+)
+```
+
+```{r}
+weightloss %>% head
+```
+
+```{r}
+weightloss %>% 
+  mutate(height_m = height_cm / 100) %>% 
+  head
+```
+
+```{r}
+weightloss %>% 
+  mutate(height_m = height_cm / 100, bmi = weight_kg / height_m ^ 2) %>% 
+  head
+```
+
+```{r}
+head(mpg)
+```
+
+```{r}
+mpg %>% 
+  select(displ, cyl, hwy) %>% 
+  pairs
+```
+
+```{r}
+mpg %>% pander()
+```
+
+```{r}
+summary(mpg)
+```
+
+```{r}
+mpg %>% glimpse()
 ```
 
 ```{r}
