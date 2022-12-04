@@ -13,9 +13,35 @@ x <- tribble(
 #cast tibble to df
 df <- data.frame(x)
 
+#some operations
 rowSums(df)
 colSums(df)
 names(df)
 summary(df)
+str(df)
+dim(df)
+length(df)
+mean(df$x, na.rm = T)
+mean(colSums(df))
 
+#using pipe for the same operation
 mean(rowSums(df))
+
+df %>% 
+  rowSums() %>% 
+  mean()
+
+avengers <- read.csv('Downloads/avengers.csv')
+
+avengers %>% head()
+avengers %>% names()
+
+
+
+
+
+
+
+
+
+
