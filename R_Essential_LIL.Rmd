@@ -1,0 +1,39 @@
+---
+title: "R Essential Training"
+link: "https://www.linkedin.com/learning/r-essential-training-wrangling-and-visualizing-data/entering-data?autoplay=true&resume=false&u=82999986"
+output: html_notebook
+---
+
+```{r}
+#install.packages("pacman")
+#library("pacman")
+#require("pacman")
+#pacman::p_load(dplyr, ggplot2)
+```
+
+```{r}
+2+2
+```
+```{r}
+1:100
+```
+```{r}
+print("Hello World!")
+```
+```{r}
+x <- 5
+x
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
